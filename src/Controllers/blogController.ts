@@ -22,7 +22,17 @@ const addArticle = async (req: any, res: any) => {
 const getAllArticlesByUser = async (req: any, res: any) => {
   try {
     const userId = req.body.userId; // Assuming userId is the field containing the user's ID
-    const articles = await Blog.find({ userId: userId }); // Query for articles based on the user's ID
+    const articles = await Blog.find({ _id: userId }); // Query for articles based on the user's ID
+    console.log(articles)
+    res.status(200).send({ articles, message: "Blogs are fetched successfully" });
+  } catch (error:any) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getAllArticles = async (req: any, res: any) => {
+  try {
+    const articles = await Blog.find(); // Query for articles based on the user's ID
     res.status(200).send({ articles, message: "Blogs are fetched successfully" });
   } catch (error:any) {
     res.status(500).json({ message: error.message });
@@ -64,4 +74,4 @@ const updateArticle = async (req: any, res: any) => {
     res.status(400).json({ message: error.message });
   }
 };
-module.exports = { addArticle, getAllArticlesByUser, deleteArticles, updateArticle };
+module.exports = { addArticle, getAllArticlesByUser, deleteArticles, updateArticle,getAllArticles };

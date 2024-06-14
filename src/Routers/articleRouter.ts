@@ -11,7 +11,7 @@ blogRouter.post(
   blogController.addArticle
 );
 blogRouter.get(
-  "/getAllArticlesByUser",
+  "/getAllArticlesOfLoggedInUser",
   tokenauth.verifyToken,
   blogController.getAllArticlesByUser
 );
@@ -31,5 +31,12 @@ blogRouter.delete(
   tokenauth.verifyToken,
   blogController.deleteArticles
 );
+
+blogRouter.delete(
+  "/getAllArticles",
+  tokenauth.verifyToken,
+  blogController.getAllArticles
+);
+
 
 module.exports = blogRouter;
