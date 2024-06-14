@@ -11,9 +11,9 @@ blogRouter.post(
   blogController.addArticle
 );
 blogRouter.get(
-  "/getAllArticles",
+  "/getAllArticlesByUser",
   tokenauth.verifyToken,
-  blogController.getAllArticles
+  blogController.getAllArticlesByUser
 );
 blogRouter.post(
   "/updateArticle",
