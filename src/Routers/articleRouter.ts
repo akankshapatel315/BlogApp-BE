@@ -32,7 +32,7 @@ blogRouter.delete(
   blogController.deleteArticles
 );
 
-blogRouter.delete(
+blogRouter.get(
   "/getAllArticles",
   tokenauth.verifyToken,
   blogController.getAllArticles
