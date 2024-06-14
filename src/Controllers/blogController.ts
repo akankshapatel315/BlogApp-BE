@@ -22,8 +22,8 @@ const addArticle = async (req: any, res: any) => {
 const getAllArticlesByUser = async (req: any, res: any) => {
   try {
     const userId = req.body.userId; // Assuming userId is the field containing the user's ID
-    const articles = await Blog.find({ _id: userId }); // Query for articles based on the user's ID
-    console.log(articles)
+    const articles = await Blog.find({ createdUserId: userId }); // Query for articles based on the user's ID
+    console.log(articles,"-------------")
     res.status(200).send({ articles, message: "Blogs are fetched successfully" });
   } catch (error:any) {
     res.status(500).json({ message: error.message });
